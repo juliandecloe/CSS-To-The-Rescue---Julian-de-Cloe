@@ -191,7 +191,7 @@ main section > ul > li {
 	transition-delay: 1s;
 	display: flex;
 
-	background-color: #f004;
+	/* background-color: #f004; */
 }
 
 input[type="checkbox"]:checked ~ main section > ul > li {
