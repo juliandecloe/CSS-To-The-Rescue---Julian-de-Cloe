@@ -173,7 +173,7 @@ section > ul {
 	display:grid;
 	place-items:center;
 
-	background-color: #ff4;
+	/* background-color: #ff4; */
 }
 
 input[type="checkbox"]:checked ~ main section > ul {
