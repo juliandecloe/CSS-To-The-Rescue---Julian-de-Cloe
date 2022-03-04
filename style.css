@@ -15,18 +15,16 @@
 body {
 	display: flex;
 	justify-content: center;
-	align-items: center;
+	align-items: flex-end;
 	height: 100vh;
-	background: darkgray;
+	background: black;
 }
 
 main {
-	position: relative;
-	width: 300px;
-	height: 350px;
 	display: flex;
 	justify-content: center;
 	align-items: center;
+	padding-bottom: 15vh;
 }
 
 /*===== IMAGES =====*/
@@ -46,19 +44,25 @@ img:last-child {
 	transform: scaleX(-1);
 } */
 
+section {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	transition: 0.8s ease-out forwards;
+}
+
 /*===== FIRE ROCKET =====*/
 
 label {
 	position: absolute;
-	top: 120px;
-	left: 125px;
-	transform: scale(0.24);
+	transform: scale(0.3);
 	z-index: 5;
 	height: 350px;
 	width: 120px;
 	filter: drop-shadow(2px 2px 4px rgb(0,0,0,0.5));
 	transition: 1s;
 	cursor: pointer;
+	animation: 1s
 }
 
 label > figure:first-child {
@@ -143,44 +147,33 @@ input[type="checkbox"]:checked ~ main section label {
 
 /*===== FIREWORK =====*/
 
-section {
-	display: flex;
-	justify-content: center;
-	align-items: flex-end;
-	width: 300px;
-	height: 350px;
-	transition: 0.8s ease-out forwards;
+input[type="checkbox"]:checked ~ main section {
+	transform: translateY(-55vh);
 }
 
-input[type="checkbox"]:checked ~ main section {
-	transform: translateY(-50vh);
-}
+section > ul > li:nth-of-type(1) { --index:1; }
+section > ul > li:nth-of-type(2) { --index:2; }
+section > ul > li:nth-of-type(3) { --index:3; }
+section > ul > li:nth-of-type(4) { --index:4; }
+section > ul > li:nth-of-type(5) { --index:5; }
+section > ul > li:nth-of-type(6) { --index:6; }
+section > ul > li:nth-of-type(7) { --index:7; }
+section > ul > li:nth-of-type(8) { --index:8; }
+section > ul > li:nth-of-type(9) { --index:9; }
+section > ul > li:nth-of-type(10) { --index:10; }
+section > ul > li:nth-of-type(11) { --index:11; }
+section > ul > li:nth-of-type(12) { --index:12; }
 
 section > ul {
 	list-style-type: none;
 	position: relative;
 	width: 1rem;
 	height: 1rem;
-	top: -4rem;
-	margin-left: 4.5rem;
-}
 
-ul > li:nth-of-type(1) { --index:1; }
-ul > li:nth-of-type(2) { --index:2; }
-ul > li:nth-of-type(3) { --index:3; }
-ul > li:nth-of-type(4) { --index:4; }
-ul > li:nth-of-type(5) { --index:5; }
-ul > li:nth-of-type(6) { --index:6; }
-ul > li:nth-of-type(7) { --index:7; }
-ul > li:nth-of-type(8) { --index:8; }
-ul > li:nth-of-type(9) { --index:9; }
-ul > li:nth-of-type(10) { --index:10; }
-ul > li:nth-of-type(11) { --index:11; }
-ul > li:nth-of-type(12) { --index:12; }
+	display:grid;
+	place-items:center;
 
-
-section > ul {
-	visibility: hidden;
+	background-color: #ff4;
 }
 
 input[type="checkbox"]:checked ~ main section > ul {
@@ -189,31 +182,65 @@ input[type="checkbox"]:checked ~ main section > ul {
 
 main section > ul > li {
 	position: absolute;
-	width: 25%;
-	height: 200%;
-	background-color: blue;
-	top: 50%;
-	left: 37.5%;
-	transform-origin: center; 
-	transform: var(--rotate) scaleY(.2);
+	top:50%;
+	width: 40%;
+	height: 1200%;
+	transform-origin: center top; 
+	transform: var(--rotate);
 	transition: 0.3s ease-out;
 	transition-delay: 1s;
+	display: flex;
+
+	background-color: #f004;
 }
 
 input[type="checkbox"]:checked ~ main section > ul > li {
-	transform: var(--rotate) scaleY(5) translateY(2em) scaleY(0);
-	animation: showlist 1s 2s forwards;
+	transform: var(--rotate) translateY(2em);
 }
 
-@keyframes showlist {
+section > ul > li::after {
+	content: "";
+	display: block;
+	background-color: blue;
+	width: 100%;
+	height: 50%;
+	transition: 0.4s ease-out;
+	transition-delay: 1s;
+	transform-origin: center top;
+	transform: scaleY(0);
+	position: absolute;
+}
+
+input[type="checkbox"]:checked ~ main section > ul > li::after {
+	animation: after .3s 1s ease-out forwards;
+}
+
+@keyframes after {
 	0% {
-		transform: translateY(2em) scaleY(0);
-		background: none;
+		transform: scaleY(0);
+	}
+	33% {
+		transform: scaleY(1) ;
+	}
+	67% {
+		transform: translateY(100%) scaleY(1) ;
 	}
 	100% {
-		transform: translateY(2em) scaleY(1);
-		background: none;
+		transform: translateY(200%) scaleY(0) ;
 	}
+}
+
+main section > ul > li ul {
+	list-style-type: none;
+	position: relative;
+	width: .5em;
+	aspect-ratio: 1/1;
+	align-self: end;
+
+	display: grid;
+	place-items: center;
+
+	/* background-color: #f088; */
 }
 
 ul > li li:nth-of-type(1) { --index2:1; }
@@ -222,27 +249,32 @@ ul > li li:nth-of-type(3) { --index2:3; }
 ul > li li:nth-of-type(4) { --index2:4; }
 ul > li li:nth-of-type(5) { --index2:5; }
 
-main section > ul > li ul {
-	list-style-type: none;
-	position: relative;
-	width: 1rem;
-	height: 1rem;
-}
-
 main section > ul > li li {
 	position: absolute;
+	top:50%;
 	width: 25%;
-	height: 200%;
-	background-color: red;
-	transform-origin: center; 
-	transform: var(--rotate2) scaleY(.2);
+	aspect-ratio: 1/8;
+	background-color: #f00;
+	transform-origin: center top;
+	transform: var(--rotate2) scaleY(0);
 	transition: 0.3s ease-out;
-	transition-delay: 2s;
+	transition-delay: 1.8s;
 }
 
 input[type="checkbox"]:checked ~ main section > ul > li li {
-	visibility: visible;
-	transform: var(--rotate2) scaleY(5) translateY(2em) scaleY(0);
+	animation: lili .3s 1.5s ease-out forwards;
+}
+
+@keyframes lili {
+	0% {
+		transform: var(--rotate2) translateY(0%) scaleY(0);
+	}
+	50% {
+		transform: var(--rotate2) translateY(0%) scaleY(3);
+	}
+	100% {
+		transform: var(--rotate2) translateY(400%) scaleY(0);
+	}
 }
 
 input[type="checkbox"]:checked ~ main label {
@@ -253,3 +285,53 @@ section:first-child {
 	transition: 1s ease-out;
 }
 
+
+
+/* 
+
+ACCIDENTAL COOL FIREWORK PATTERNS
+====================================
+
+CIRCLE
+
+main section > ul > li li {
+	position: absolute;
+	width: 10%;
+	height: 200%;
+	background-color: red;
+	transform-origin: center; 
+	transform: var(--rotate2) scaleY(.2);
+	transition: 0.3s ease-out;
+	transition-delay: 1.75s;
+	visibility: hidden;
+}
+
+input[type="checkbox"]:checked ~ main section > ul > li li {
+	visibility: visible;
+	transform: var(--rotate2) scaleY(6) translateY(2em) scaleY(0);
+}
+
+====================================
+
+CALEIDOSCOPE
+
+input[type="checkbox"]:checked ~ main section > ul > li {
+	transform: var(--rotate) scaleY(5) translateY(2em);
+}
+
+section > ul > li::after {
+	content: "";
+	display: block;
+	background-color: blue;
+	width: 100%;
+	height: 100%;
+	transition: 0.3s ease-out;
+	transition-delay: 1s;
+	transform: scaleY(0);
+}
+
+input[type="checkbox"]:checked ~ main section > ul > li::after {
+	transform: scaleY(5) scaleY(0);
+}
+
+*/
