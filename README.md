@@ -40,15 +40,15 @@ This worked, but I knew it could be way easier. My teacher taught me how to use 
 
 The only way I could make it interactive was using a `<label>` element. With the `<label>` I made a firework arrow using three `<figures>`. One for the tip, one for the body and one for the stick.
 
-`
+```
 <label for="right-bottom">
     <figure></figure>
     <figure></figure>
     <figure></figure>
 </label>
-`
+```
 
-`
+```
 label {
 	position: absolute;
 	transform: scale(0.3);
@@ -116,7 +116,7 @@ label > figure:nth-child(3) {
 	box-shadow: inset -2px 0 8px rgb(0,0,0,0.5);
 	clip-path: ellipse(10px 95px at 50% 10%);
 }
-`
+```
 
 This is the result:
 
