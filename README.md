@@ -33,7 +33,20 @@ img:last-child {
 }
 `
 
-Next I had my first challange: Making a first interactive firework arrow. The only way I could make it interactive was using a `<label>` element. With the `<label>` I made a firework arrow using three `<figures>`. One for the tip, one for the body and one for the stick.
+
+Next I had my first challange: Making a first interactive firework arrow. I tried it using a lot of figures for different elements. I wanted to give it a nice look with a lighthouse kind of pattern on it. For every stripe on the arrow I used a different `<figure>` element.
+
+This worked, but I knew it could be way easier. My teacher taught me how to use gradients. Now I use a gradient for the middlepart of the arrow,
+
+The only way I could make it interactive was using a `<label>` element. With the `<label>` I made a firework arrow using three `<figures>`. One for the tip, one for the body and one for the stick.
+
+`
+<label for="right-bottom">
+    <figure></figure>
+    <figure></figure>
+    <figure></figure>
+</label>
+`
 
 `
 label {
@@ -104,6 +117,10 @@ label > figure:nth-child(3) {
 	clip-path: ellipse(10px 95px at 50% 10%);
 }
 `
+
+This is the result:
+
+![](docimg/firearrow.png)
 
 
 
