@@ -10,13 +10,13 @@ I started this journey with a different plan. Have you seen Kung Fu Panda? In th
 
 It started with the basics. Using images for the panda.
 
-`
+```
 <label for="">
     <img src="img/panda.png" alt="Kung Fu Panda">
     <img src="img/chair.png" alt="Chair">
 </label>
-`
-`
+```
+```
 img:first-child {
 	position: absolute;
 	top: 5vh;
@@ -31,7 +31,7 @@ img:last-child {
 	width: 280px;
 	transform: scaleX(-1);
 }
-`
+```
 
 
 Next I had my first challange: Making a first interactive firework arrow. I tried it using a lot of figures for different elements. I wanted to give it a nice look with a lighthouse kind of pattern on it. For every stripe on the arrow I used a different `<figure>` element.
