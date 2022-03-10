@@ -1,0 +1,627 @@
+/*========== GENERAL ==========*/
+
+:root * {
+	--hoekVar: calc(360deg / 12);
+	--rotate: rotate(calc( var(--hoekVar) * var(--index) ));
+	--hoekVar2: calc(360deg / 5);
+	--rotate2: rotate(calc( var(--hoekVar2) * var(--index2) ));
+	--star1: 5px;
+	--star2: 3px;
+}
+
+@property --star1 {
+	syntax: '<length>';
+	inherits: false;
+	initial-value: 0px;
+}
+
+@property --star2 {
+	syntax: '<length>';
+	inherits: false;
+	initial-value: 0px;
+}
+
+* {
+	padding: 0;
+	margin: 0;
+}
+
+body, html {
+	overflow: hidden;
+}
+
+html {
+	background: linear-gradient(0deg, rgba(9,11,52,1) 0%, rgba(9,26,112,1) 25%, rgba(0,0,0,1) 64%, rgba(0,0,0,1) 100%);
+}
+
+@keyframes stars {
+	0% {
+		--star1: 5px;
+	}
+	100% {
+		--star1: 10px;
+	}
+}
+
+@keyframes stars2 {
+	0% {
+		--star2: 3px;
+	}
+	100% {
+		--star2: 6px;
+	}
+}
+
+body {
+	background-position: center;
+	background-image:
+	radial-gradient(
+		circle at
+			10%
+			20%,
+		white,
+		transparent var(--star1)
+	),
+	radial-gradient(
+		circle at
+			34%
+			15%,
+		white,
+		transparent var(--star2)
+	),
+	radial-gradient(
+		circle at
+			50%
+			60%,
+		white,
+		transparent var(--star2)
+	),
+	radial-gradient(
+		circle at
+			60%
+			80%,
+		white,
+		transparent var(--star2)
+	),
+	radial-gradient(
+		circle at
+			25%
+			40%,
+		white,
+		transparent var(--star2)
+	),
+	radial-gradient(
+		circle at
+			7%
+			80%,
+		white,
+		transparent var(--star1)
+	),
+	radial-gradient(
+		circle at
+			87%
+			16%,
+		white,
+		transparent var(--star1)
+	),
+	radial-gradient(
+		circle at
+			76%
+			79%,
+		white,
+		transparent var(--star2)
+	),
+	radial-gradient(
+		circle at
+			90%
+			90%,
+		white,
+		transparent var(--star1)
+	),
+	radial-gradient(
+		circle at
+			60%
+			5%,
+		white,
+		transparent var(--star1)
+	),
+	radial-gradient(
+		circle at
+			72%
+			32%,
+		white,
+		transparent var(--star2)
+	),
+	radial-gradient(
+		circle at
+			50%
+			28%,
+		white,
+		transparent var(--star1)
+	),
+	radial-gradient(
+		circle at
+			37%
+			80%,
+		white,
+		transparent var(--star1)
+	),
+	radial-gradient(
+		circle at
+			82%
+			54%,
+		white,
+		transparent var(--star2)
+	);
+	animation: 
+	stars 1s linear alternate infinite,
+	stars2 1.5s linear alternate infinite;
+}
+
+@media (prefers-reduced-motion) {
+	body {
+		animation-name: dissolve;
+	}
+}
+
+main {
+	display: flex;
+	justify-content: center;
+	align-items: end;
+	width: 100vw;
+	height: 100vh;
+	padding-left: 1rem;
+}
+
+@media (max-width: 630px) {
+	main {
+		transform: scale(.5) translateY(50vh);
+	}
+}
+
+section {
+	display: grid;
+	place-items: center;
+	transition: 1s ease-out;
+	width: 50vw;
+}
+
+@media (max-width: 630px) {
+	section {
+		width: 80vw;
+	}
+}
+
+input {
+	display: none;
+}
+
+/*========== FIRE ROCKET ==========*/
+
+/*===== GENERAL =====*/
+
+label {
+	transform: scale(.3) translateY(50vh);
+	z-index: 5;
+	height: 350px;
+	width: 120px;
+	filter: drop-shadow(2px 2px 4px rgb(0,0,0,0.5));
+	transition: 1s;
+	cursor: pointer;
+	animation: 1s
+}
+
+@media (max-width: 630px) {
+	label {
+		transform: scale(.5);
+	}
+}
+
+section label > figure:first-child {
+	border-radius: 50%;
+	position: absolute;
+	left: calc(50% - 55px);
+	width: 110px;
+	height: 130px;
+	z-index: 3;
+	clip-path: ellipse(90% 70% at center top);
+	background-image:	
+		conic-gradient(
+		at center top,
+		transparent 146deg,
+		darkgray 146deg,
+		lightgray 170deg,
+		darkgray 214deg,
+		transparent 214deg
+	);	
+}
+
+section label figure:nth-child(2) {
+	position: absolute;
+	top: 83px;
+	left: calc(50% - 37.5px);
+	width: 75px;
+	height: 160px;
+	z-index: 2;
+	background-size: 100% 100%, 600% 600%;
+	background-position:left top, 40% -30%;
+	border-radius: 0 0 50% 50% / 0 0 1em 1em;
+}
+
+section label > figure:nth-child(3) {
+	position: absolute;
+	background: #BA8C63;
+	top: 220px;
+	left: calc(50% - 37.5px);
+	width: 10px;
+	height: 110px;
+	z-index: 1;
+	box-shadow: inset -2px 0 8px rgb(0,0,0,0.5);
+	clip-path: ellipse(10px 95px at 50% 10%);
+}
+
+
+/*===== COLOR ARROWS =====*/
+
+section:first-child label figure:nth-child(2) {
+	background-image:
+		linear-gradient(
+			to right,
+			#303a 0%,
+			transparent 65%,
+			#3036 100%
+		),
+		repeating-radial-gradient(
+			red 0 1em,
+			blue 1em 2em
+	);
+}
+
+section:nth-child(2) label figure:nth-child(2) {
+	background-image:
+		linear-gradient(
+			to right,
+			#303a 0%,
+			transparent 65%,
+			#3036 100%
+		),
+		repeating-radial-gradient(
+			green 0 1em,
+			yellow 1em 2em
+		);
+}
+
+section:last-child label figure:nth-child(2) {
+	background-image:
+		linear-gradient(
+			to right,
+			#303a 0%,
+			transparent 65%,
+			#3036 100%
+		),
+		repeating-radial-gradient(
+			pink 0 1em,
+			purple 1em 2em
+		);
+}
+
+
+/*========== FIRE WORK ==========*/
+
+/*===== LAYER 1 =====*/
+
+section > ul {
+	list-style-type: none;
+	position: absolute;
+	width: 1rem;
+	height: 1rem;
+	display: grid;
+	place-items: center;
+	/* background-color: #ff4; */
+}
+
+section > ul > li {
+	position: absolute;
+	top: 50%;
+	width: 40%;
+	height: 1200%;
+	transform-origin: center top; 
+	transform: var(--rotate);
+	transition: .3s ease-out;
+	transition-delay: 1s;
+	display: flex;
+	/* background-color: #f004; */
+}
+
+section:nth-child(2) > ul > li {
+	position: absolute;
+	top: 50%;
+	width: 40%;
+	height: 1200%;
+	transform-origin: center top; 
+	transform: var(--rotate);
+	transition: .3s ease-out;
+	transition-delay: 1s;
+	display: flex;
+	/* background-color: #f004; */
+}
+
+section > ul > li::after {
+	content: "";
+	display: block;
+	width: 100%;
+	height: 50%;
+	transition: .2s ease-out;
+	transform-origin: center top;
+	transform: scaleY(0);
+	position: absolute;
+}
+
+/* Color */
+
+section:first-child > ul > li::after {
+	background-color: blue;
+}
+
+section:nth-child(2) > ul > li::after {
+	background-color: green;
+}
+
+section:last-child > ul li::after {
+	background-color: pink;
+}
+
+
+/*===== LAYER 2 =====*/
+
+section > ul > li ul {
+	list-style-type: none;
+	position: relative;
+	width: .5em;
+	aspect-ratio: 1/1;
+	align-self: end;
+	display: grid;
+	place-items: center;
+	/* background-color: #f088; */
+}
+
+section:first-child > ul > li li {
+	position: absolute;
+	top: 50%;
+	width: 25%;
+	aspect-ratio: 1/8;
+	background-color: #f00;
+	transform-origin: center top;
+	transform: var(--rotate2) scaleY(0);
+	transition: .3s ease-out;
+	transition-delay: 1.8s;
+}
+
+section:nth-child(2) > ul > li li {
+	position: absolute;
+	width: 30%;
+	height: 1200%;
+	background-color: yellow;
+	transform-origin: center; 
+	transform: var(--rotate2) scaleY(1);
+	transition: .5s ease-out;
+	transition-delay: 1.5s;
+	visibility: hidden;
+}
+
+
+/*========== INTERACTION ==========*/
+
+/*===== GENERAL =====*/
+
+section > ul > li:nth-of-type(1) { --index:1; }
+section > ul > li:nth-of-type(2) { --index:2; }
+section > ul > li:nth-of-type(3) { --index:3; }
+section > ul > li:nth-of-type(4) { --index:4; }
+section > ul > li:nth-of-type(5) { --index:5; }
+section > ul > li:nth-of-type(6) { --index:6; }
+section > ul > li:nth-of-type(7) { --index:7; }
+section > ul > li:nth-of-type(8) { --index:8; }
+section > ul > li:nth-of-type(9) { --index:9; }
+section > ul > li:nth-of-type(10) { --index:10; }
+section > ul > li:nth-of-type(11) { --index:11; }
+section > ul > li:nth-of-type(12) { --index:12; }
+
+ul > li li:nth-of-type(1) { --index2:1; }
+ul > li li:nth-of-type(2) { --index2:2; }
+ul > li li:nth-of-type(3) { --index2:3; }
+ul > li li:nth-of-type(4) { --index2:4; }
+ul > li li:nth-of-type(5) { --index2:5; }
+
+/* Rocket */
+
+input:first-child[type="checkbox"]:checked ~ main section:first-child, input:nth-child(2)[type="checkbox"]:checked ~ main section:nth-child(2) {
+	transform: translateY(-50vh);
+}
+
+@media (max-width: 630px) {
+	input:first-child[type="checkbox"]:checked ~ main section:first-child, input:nth-child(2)[type="checkbox"]:checked ~ main section:nth-child(2) {
+		transform: translateY(-90vh);
+	}
+}
+
+input:first-child[type="checkbox"]:checked ~ main section:first-child label, input:nth-child(2)[type="checkbox"]:checked ~ main section:nth-child(2) label {
+	transform: scale(.5, .3);
+	animation: explode 1s 1s ease-in forwards;
+}
+
+/* Explode 1 */
+
+input:first-child[type="checkbox"]:checked ~ main section:first-child > ul > li, input:nth-child(2)[type="checkbox"]:checked ~ main section:nth-child(2) > ul > li {
+	transform: var(--rotate) translateY(2em);
+}
+
+input:first-child[type="checkbox"]:checked ~ main section:first-child > ul > li::after, input:nth-child(2)[type="checkbox"]:checked ~ main section:nth-child(2) > ul > li::after {
+	animation: after .3s 1s ease-out forwards;
+}
+
+
+/*===== ARROW 1 =====*/
+
+input:first-child[type="checkbox"]:checked ~ main section:first-child > ul > li li {
+	animation: lili .3s 1.5s ease-out forwards;
+}
+
+/*===== ARROW 2 =====*/
+
+input:nth-child(2)[type="checkbox"]:checked ~ main section:nth-child(2) > ul > li li {
+	visibility: visible;
+	transform: var(--turn) scaleY(6) translateY(2em);
+	opacity: 0;
+}
+
+/*===== ARROW 3 =====*/
+
+input:nth-child(3)[type="checkbox"]:checked ~ main section:last-child {
+	transform: translateY(-50vh);
+}
+
+input:nth-child(3)[type="checkbox"]:checked ~ main article label {
+	animation: huge .8s 1s ease-out forwards;
+}
+
+/*========== ANIMATIONS ==========*/
+
+@keyframes huge {
+	0% {
+		transform: scaleY(0);
+	}
+	99% {
+		transform: translateY(200%) scaleY(0);
+		opacity: 0;
+	}
+	100% {
+		transform: translateY(0) scaleY(0);
+		opacity: 1;
+	}
+}
+
+@keyframes explode {
+	0% {
+		visibility: hidden;
+	}
+	99% {
+		visibility: hidden;
+	}
+	100% {
+		transform: translateY(65vh) scale(.3);
+		visibility: visible;
+	}
+}
+
+@keyframes after {
+	0% {
+		transform: scaleY(0);
+	}
+	33% {
+		transform: scaleY(1) ;
+	}
+	67% {
+		transform: translateY(100%) scaleY(1) ;
+	}
+	99% {
+		transform: translateY(200%) scaleY(0) ;
+	}
+	100% {
+		transform: translateY(0) scaleY(0) ;
+	}
+}
+
+@keyframes lili {
+	0% {
+		transform: var(--rotate2) translateY(0) scaleY(0);
+	}
+	50% {
+		transform: var(--rotate2) translateY(0) scaleY(3);
+	}
+	99% {
+		transform: var(--rotate2) translateY(400%) scaleY(0);
+	}
+	100% {
+		transform: var(--rotate2) translateY(0) scaleY(0);
+	}
+}
+
+
+
+/*========== CLOUDS ==========*/
+
+section:last-child li:nth-of-type(1) { --index3:1; }
+section:last-child li:nth-of-type(2) { --index3:2; }
+section:last-child li:nth-of-type(3) { --index3:3; }
+section:last-child li:nth-of-type(4) { --index3:4; }
+section:last-child li:nth-of-type(5) { --index3:5; }
+section:last-child li:nth-of-type(6) { --index3:6; }
+section:last-child li:nth-of-type(7) { --index3:7; }
+
+section:last-child {
+	top: 10vh;
+	background-color: darkgreen;
+	width: 50vw;
+	height: 80vh;
+}
+
+section:last-child ul {
+	position: relative;
+	list-style-type: none;
+	width: 5rem;
+	aspect-ratio: 1/1;
+	display: grid;
+	place-items: center;
+	background: white;
+	border-radius: 50%;
+}
+
+section:last-child li {
+	--hoekVar3: calc(360deg / 7);
+	--rotate3: rotate(calc( var(--hoekVar3) * var(--index3) ));
+	position: absolute;
+	top: 50%;
+	border-radius: 50%;
+	background-color: white !important;
+	width: 5rem;
+	height: 5rem;
+	/* border: 1px solid black; */
+	transform-origin: center top;
+	transform: var(--rotate3) translateY(1rem);
+}
+
+/* article li:first-child {
+	top: 5px;
+	left: 100px;
+}
+
+article li:nth-child(2) {
+	top: 100px;
+	left: 10px;
+}
+
+article li:nth-child(3) {
+	top: 5px;
+	left: 50px;
+}
+
+article li:nth-child(4) {
+	top: 20px;
+	left: 80px;
+}
+
+article li:nth-child(5) {
+	top: 120px;
+	left: 65px;
+}
+
+article li:nth-child(6) {
+	top: 45px;
+	left: 60px;
+}
+
+article li:last-child {
+	top: 80px;
+	left: 100px;
+} */
