@@ -31,7 +31,7 @@ body, html {
 }
 
 html {
-	background: linear-gradient(0deg, rgba(9,11,52,1) 0%, rgba(9,26,112,1) 25%, rgba(0,0,0,1) 64%, rgba(0,0,0,1) 100%);
+	background: linear-gradient(0deg, rgba(83,53,27,1) 0%, rgba(168,106,9,1) 25%, rgba(0,0,0,1) 64%, rgba(0,0,0,1) 100%);
 }
 
 @keyframes stars {
@@ -431,7 +431,7 @@ input:first-child[type="checkbox"]:checked ~ main section:first-child > ul, inpu
 
 input:first-child[type="checkbox"]:checked ~ main section:first-child > ul > li, input:nth-child(2)[type="checkbox"]:checked ~ main section:nth-child(2) > ul > li {
 	/* transform: var(--rotate) translateY(2em); */
-	transform: var(--rotate) scaleY(5) translateY(2em) scaleY(0);
+	transform: var(--rotate2) scaleY(5) translateY(2em) scaleY(0);
 
 }
 
