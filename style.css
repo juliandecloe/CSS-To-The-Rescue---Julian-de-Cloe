@@ -1,10 +1,24 @@
+/*========== GENERAL ==========*/
 
-/*===== GENERAL =====*/
 :root * {
 	--hoekVar: calc(360deg / 12);
 	--rotate: rotate(calc( var(--hoekVar) * var(--index) ));
 	--hoekVar2: calc(360deg / 5);
 	--rotate2: rotate(calc( var(--hoekVar2) * var(--index2) ));
+	--star1: 5px;
+	--star2: 3px;
+}
+
+@property --star1 {
+	syntax: '<length>';
+	inherits: false;
+	initial-value: 0px;
+}
+
+@property --star2 {
+	syntax: '<length>';
+	inherits: false;
+	initial-value: 0px;
 }
 
 * {
@@ -12,50 +26,180 @@
 	margin: 0;
 }
 
+body, html {
+	overflow: hidden;
+}
+
+@keyframes stars {
+	0% {
+		--star1: 5px;
+	}
+	100% {
+		--star1: 10px;
+	}
+}
+
+@keyframes stars2 {
+	0% {
+		--star2: 3px;
+	}
+	100% {
+		--star2: 6px;
+	}
+}
+
 body {
-	display: flex;
-	justify-content: center;
-	align-items: flex-end;
-	height: 100vh;
 	background: black;
+	background-position: center;
+	background-image:
+	radial-gradient(
+		circle at
+			10%
+			20%,
+		white,
+		transparent var(--star1)
+	),
+	radial-gradient(
+		circle at
+			34%
+			15%,
+		white,
+		transparent var(--star2)
+	),
+	radial-gradient(
+		circle at
+			50%
+			60%,
+		white,
+		transparent var(--star1)
+	),
+	radial-gradient(
+		circle at
+			60%
+			80%,
+		white,
+		transparent var(--star2)
+	),
+	radial-gradient(
+		circle at
+			25%
+			40%,
+		white,
+		transparent var(--star2)
+	),
+	radial-gradient(
+		circle at
+			7%
+			80%,
+		white,
+		transparent var(--star1)
+	),
+	radial-gradient(
+		circle at
+			87%
+			16%,
+		white,
+		transparent var(--star1)
+	),
+	radial-gradient(
+		circle at
+			76%
+			79%,
+		white,
+		transparent var(--star2)
+	),
+	radial-gradient(
+		circle at
+			90%
+			90%,
+		white,
+		transparent var(--star1)
+	),
+	radial-gradient(
+		circle at
+			60%
+			5%,
+		white,
+		transparent var(--star1)
+	),
+	radial-gradient(
+		circle at
+			72%
+			32%,
+		white,
+		transparent var(--star2)
+	),
+	radial-gradient(
+		circle at
+			50%
+			28%,
+		white,
+		transparent var(--star1)
+	),
+	radial-gradient(
+		circle at
+			37%
+			80%,
+		white,
+		transparent var(--star1)
+	),
+	radial-gradient(
+		circle at
+			82%
+			54%,
+		white,
+		transparent var(--star2)
+	);
+	animation: 
+	stars 1s linear alternate infinite,
+	stars2 1.5s linear alternate infinite;
+}
+
+@media (prefers-reduced-motion) {
+	body {
+		animation-name: dissolve;
+	}
 }
 
 main {
 	display: flex;
 	justify-content: center;
-	align-items: center;
-	padding-bottom: 15vh;
+	align-items: end;
+	width: 100vw;
+	height: 100vh;
+	padding-left: 1rem;
 }
 
-/*===== IMAGES =====*/
-/* 
-img:first-child {
-	position: absolute;
-	top: 5vh;
-	left: 7vw;
-	z-index: 1;
+@media (max-width: 630px) {
+	main {
+		transform: scale(.5) translateY(50vh);
+	}
 }
-
-img:last-child {
-	position: absolute;
-	top: 8vh;
-	left: 3vw;
-	width: 280px;
-	transform: scaleX(-1);
-} */
 
 section {
-	display: flex;
-	justify-content: center;
-	align-items: center;
+	display: grid;
+	place-items: center;
 	transition: 0.8s ease-out forwards;
+	width: 50vw;
 }
 
-/*===== FIRE ROCKET =====*/
+@media (max-width: 630px) {
+	section {
+		width: 80vw;
+	}
+}
+
+input {
+	display: none;
+}
+
+
+/*========== FIRE ROCKET ==========*/
+
+/*===== GENERAL =====*/
 
 label {
-	position: absolute;
-	transform: scale(0.3);
+	transform: scale(.3) translateY(50vh);
 	z-index: 5;
 	height: 350px;
 	width: 120px;
@@ -65,7 +209,13 @@ label {
 	animation: 1s
 }
 
-label > figure:first-child {
+@media (max-width: 630px) {
+	label {
+		transform: scale(.5);
+	}
+}
+
+section label > figure:first-child {
 	clip-path: polygon(50% 0%, 0% 100%, 100% 100%);
 	border-radius: 50%;
 	position: absolute;
@@ -73,6 +223,7 @@ label > figure:first-child {
 	width: 110px;
 	height: 130px;
 	z-index: 3;
+	clip-path:ellipse(90% 70% at center top);
 	background-image:	
 		conic-gradient(
 		at center top,
@@ -81,35 +232,22 @@ label > figure:first-child {
 		lightgray 170deg,
 		darkgray 214deg,
 		transparent 214deg
-	);
-	clip-path:ellipse(90% 70% at center top);
+	);	
 }
 
-label figure:nth-child(2) {
-	background: blue;
+section label figure:nth-child(2) {
 	position: absolute;
 	top: 83px;
 	left: calc(50% - 37.5px);
 	width: 75px;
 	height: 160px;
 	z-index: 2;
-	background-image:
-		linear-gradient(
-			to right,
-			#303a 0%,
-			transparent 65%,
-			#3036 100%
-		),
-		repeating-radial-gradient(
-			red 0 1em,
-			blue 1em 2em
-		);
 	background-size: 100% 100%, 600% 600%;
 	background-position:left top, 40% -30%;
 	border-radius: 0 0 50% 50% / 0 0 1em 1em;
 }
 
-label > figure:nth-child(3) {
+section label > figure:nth-child(3) {
 	position: absolute;
 	background: #BA8C63;
 	top: 220px;
@@ -121,35 +259,129 @@ label > figure:nth-child(3) {
 	clip-path: ellipse(10px 95px at 50% 10%);
 }
 
-input {
-	display: none;
+
+/*===== COLOR ARROWS =====*/
+
+section:first-child label figure:nth-child(2) {
+	background-image:
+		linear-gradient(
+			to right,
+			#303a 0%,
+			transparent 65%,
+			#3036 100%
+		),
+		repeating-radial-gradient(
+			red 0 1em,
+			blue 1em 2em
+	);
 }
 
-input[type="checkbox"]:checked ~ main section label {
-	transform: scale(0.5, 0.24);
-	animation: explode 1s 1s ease-in forwards;
+section:nth-child(2) label figure:nth-child(2) {
+	background-image:
+		linear-gradient(
+			to right,
+			#303a 0%,
+			transparent 65%,
+			#3036 100%
+		),
+		repeating-radial-gradient(
+			green 0 1em,
+			yellow 1em 2em
+		);
 }
 
-@keyframes explode {
-	0% {
-		transform: translate(0.24);
-		visibility: hidden;
-	}
-	90% {
-		transform: translate(0.5, 0.24);
-		visibility: hidden;
-	}
-	100% {
-		transform: translate(0.5, 0.24);
-		visibility: hidden;
-	}
+
+/*========== FIRE WORK ==========*/
+
+/*===== LAYER 1 =====*/
+
+section > ul {
+	list-style-type: none;
+	position: absolute;
+	width: 1rem;
+	height: 1rem;
+	display: grid;
+	place-items: center;
+	/* background-color: #ff4; */
 }
 
-/*===== FIREWORK =====*/
-
-input[type="checkbox"]:checked ~ main section {
-	transform: translateY(-55vh);
+main section > ul > li {
+	position: absolute;
+	top: 50%;
+	width: 40%;
+	height: 1200%;
+	transform-origin: center top; 
+	transform: var(--rotate);
+	transition: 0.3s ease-out;
+	transition-delay: 1s;
+	display: flex;
+	/* background-color: #f004; */
 }
+
+section > ul > li::after {
+	content: "";
+	display: block;
+	background-color: green;
+	width: 100%;
+	height: 50%;
+	transition: 0.2s ease-out;
+	transform-origin: center top;
+	transform: scaleY(0);
+	position: absolute;
+}
+
+/* Color */
+
+section:first-child > ul > li::after {
+	background-color: blue;
+}
+
+section:nth-child(2) > ul > li::after {
+	background-color: green;
+}
+
+
+/*===== LAYER 2 =====*/
+
+section > ul > li ul {
+	list-style-type: none;
+	position: relative;
+	width: .5em;
+	aspect-ratio: 1/1;
+	align-self: end;
+	display: grid;
+	place-items: center;
+	/* background-color: #f088; */
+}
+
+section:first-child > ul > li li {
+	position: absolute;
+	top: 50%;
+	width: 25%;
+	aspect-ratio: 1/8;
+	background-color: #f00;
+	transform-origin: center top;
+	transform: var(--rotate2) scaleY(0);
+	transition: 0.3s ease-out;
+	transition-delay: 1.8s;
+}
+
+section:nth-child(2) > ul > li li {
+	position: absolute;
+	width: 30%;
+	height: 1200%;
+	background-color: yellow;
+	transform-origin: center; 
+	transform: var(--rotate2) scaleY(1);
+	transition: 0.5s ease-out;
+	transition-delay: 1.5s;
+	visibility: hidden;
+}
+
+
+/*========== INTERACTION ==========*/
+
+/*===== GENERAL =====*/
 
 section > ul > li:nth-of-type(1) { --index:1; }
 section > ul > li:nth-of-type(2) { --index:2; }
@@ -164,55 +396,76 @@ section > ul > li:nth-of-type(10) { --index:10; }
 section > ul > li:nth-of-type(11) { --index:11; }
 section > ul > li:nth-of-type(12) { --index:12; }
 
-section > ul {
-	list-style-type: none;
-	position: relative;
-	width: 1rem;
-	height: 1rem;
+ul > li li:nth-of-type(1) { --index2:1; }
+ul > li li:nth-of-type(2) { --index2:2; }
+ul > li li:nth-of-type(3) { --index2:3; }
+ul > li li:nth-of-type(4) { --index2:4; }
+ul > li li:nth-of-type(5) { --index2:5; }
 
-	display:grid;
-	place-items:center;
+/* Rocket */
 
-	/* background-color: #ff4; */
+input:first-child[type="checkbox"]:checked ~ main section:first-child, input:nth-child(2)[type="checkbox"]:checked ~ main section:nth-child(2) {
+	transform: translateY(-50vh);
 }
 
-input[type="checkbox"]:checked ~ main section > ul {
+@media (max-width: 630px) {
+	input:first-child[type="checkbox"]:checked ~ main section:first-child, input:nth-child(2)[type="checkbox"]:checked ~ main section:nth-child(2) {
+		transform: translateY(-90vh);
+	}
+}
+
+input:first-child[type="checkbox"]:checked ~ main section:first-child label, input:nth-child(2)[type="checkbox"]:checked ~ main section:nth-child(2) label {
+	pointer-events: none;
+	transform: scale(0.5, 0.24);
+	animation: explode 1s 1s ease-in forwards;
+}
+
+/* Explode 1 */
+
+input:first-child[type="checkbox"]:checked ~ main section:first-child > ul, input:nth-child(2)[type="checkbox"]:checked ~ main section:nth-child(2) > ul {
 	visibility: visible;
 }
 
-main section > ul > li {
-	position: absolute;
-	top:50%;
-	width: 40%;
-	height: 1200%;
-	transform-origin: center top; 
-	transform: var(--rotate);
-	transition: 0.3s ease-out;
-	transition-delay: 1s;
-	display: flex;
-
-	/* background-color: #f004; */
-}
-
-input[type="checkbox"]:checked ~ main section > ul > li {
+input:first-child[type="checkbox"]:checked ~ main section:first-child > ul > li, input:nth-child(2)[type="checkbox"]:checked ~ main section:nth-child(2) > ul > li {
 	transform: var(--rotate) translateY(2em);
 }
 
-section > ul > li::after {
-	content: "";
-	display: block;
-	background-color: blue;
-	width: 100%;
-	height: 50%;
-	transition: 0.4s ease-out;
-	transition-delay: 1s;
-	transform-origin: center top;
-	transform: scaleY(0);
-	position: absolute;
+input:first-child[type="checkbox"]:checked ~ main section:first-child > ul > li::after, input:nth-child(2)[type="checkbox"]:checked ~ main section:nth-child(2) > ul > li::after {
+	animation: after .3s 1s ease-out forwards;
 }
 
-input[type="checkbox"]:checked ~ main section > ul > li::after {
-	animation: after .3s 1s ease-out forwards;
+
+/*===== ARROW 1 =====*/
+
+input:first-child[type="checkbox"]:checked ~ main section:first-child > ul > li li {
+	animation: lili .3s 1.5s ease-out forwards;
+}
+
+
+/*===== ARROW 2 =====*/
+
+input:nth-child(2)[type="checkbox"]:checked ~ main section:nth-child(2) > ul > li li {
+	visibility: visible;
+	transform: var(--rotate1) scaleY(6) translateY(2em);
+	opacity: 0;
+}
+
+
+/*========== ANIMATIONS ==========*/
+
+@keyframes explode {
+	0% {
+		transform: translate(0.24);
+		visibility: hidden;
+	}
+	90% {
+		transform: translate(0.5, 0.24);
+		visibility: hidden;
+	}
+	100% {
+		transform: translate(0.5, 0.24);
+		visibility: hidden;
+	}
 }
 
 @keyframes after {
@@ -230,41 +483,6 @@ input[type="checkbox"]:checked ~ main section > ul > li::after {
 	}
 }
 
-main section > ul > li ul {
-	list-style-type: none;
-	position: relative;
-	width: .5em;
-	aspect-ratio: 1/1;
-	align-self: end;
-
-	display: grid;
-	place-items: center;
-
-	/* background-color: #f088; */
-}
-
-ul > li li:nth-of-type(1) { --index2:1; }
-ul > li li:nth-of-type(2) { --index2:2; }
-ul > li li:nth-of-type(3) { --index2:3; }
-ul > li li:nth-of-type(4) { --index2:4; }
-ul > li li:nth-of-type(5) { --index2:5; }
-
-main section > ul > li li {
-	position: absolute;
-	top:50%;
-	width: 25%;
-	aspect-ratio: 1/8;
-	background-color: #f00;
-	transform-origin: center top;
-	transform: var(--rotate2) scaleY(0);
-	transition: 0.3s ease-out;
-	transition-delay: 1.8s;
-}
-
-input[type="checkbox"]:checked ~ main section > ul > li li {
-	animation: lili .3s 1.5s ease-out forwards;
-}
-
 @keyframes lili {
 	0% {
 		transform: var(--rotate2) translateY(0%) scaleY(0);
@@ -277,61 +495,7 @@ input[type="checkbox"]:checked ~ main section > ul > li li {
 	}
 }
 
-input[type="checkbox"]:checked ~ main label {
-	pointer-events: none;
+section {
+	transition: 1s;
 }
 
-section:first-child {
-	transition: 1s ease-out;
-}
-
-
-
-/* 
-
-ACCIDENTAL COOL FIREWORK PATTERNS
-====================================
-
-CIRCLE
-
-main section > ul > li li {
-	position: absolute;
-	width: 10%;
-	height: 200%;
-	background-color: red;
-	transform-origin: center; 
-	transform: var(--rotate2) scaleY(.2);
-	transition: 0.3s ease-out;
-	transition-delay: 1.75s;
-	visibility: hidden;
-}
-
-input[type="checkbox"]:checked ~ main section > ul > li li {
-	visibility: visible;
-	transform: var(--rotate2) scaleY(6) translateY(2em) scaleY(0);
-}
-
-====================================
-
-CALEIDOSCOPE
-
-input[type="checkbox"]:checked ~ main section > ul > li {
-	transform: var(--rotate) scaleY(5) translateY(2em);
-}
-
-section > ul > li::after {
-	content: "";
-	display: block;
-	background-color: blue;
-	width: 100%;
-	height: 100%;
-	transition: 0.3s ease-out;
-	transition-delay: 1s;
-	transform: scaleY(0);
-}
-
-input[type="checkbox"]:checked ~ main section > ul > li::after {
-	transform: scaleY(5) scaleY(0);
-}
-
-*/
