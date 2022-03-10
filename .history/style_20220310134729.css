@@ -74,7 +74,7 @@ body {
 			50%
 			60%,
 		white,
-		transparent var(--star2)
+		transparent var(--star1)
 	),
 	radial-gradient(
 		circle at
@@ -182,7 +182,7 @@ main {
 section {
 	display: grid;
 	place-items: center;
-	transition: 1s ease-out;
+	transition: 1s ease-out forwards;
 	width: 50vw;
 }
 
@@ -403,6 +403,13 @@ ul > li li:nth-of-type(2) { --index2:2; }
 ul > li li:nth-of-type(3) { --index2:3; }
 ul > li li:nth-of-type(4) { --index2:4; }
 ul > li li:nth-of-type(5) { --index2:5; }
+
+section {
+	display: grid;
+	place-items: center;
+	transition: 1s ease-out forwards;
+	width: 50vw;
+}
 
 /* Rocket */
 

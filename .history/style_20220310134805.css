@@ -74,7 +74,7 @@ body {
 			50%
 			60%,
 		white,
-		transparent var(--star2)
+		transparent var(--star1)
 	),
 	radial-gradient(
 		circle at
@@ -182,7 +182,7 @@ main {
 section {
 	display: grid;
 	place-items: center;
-	transition: 1s ease-out;
+	transition: 1s ease-out forwards;
 	width: 50vw;
 }
 
@@ -496,5 +496,12 @@ input:nth-child(2)[type="checkbox"]:checked ~ main section:nth-child(2) > ul > l
 	100% {
 		transform: var(--rotate2) translateY(400%) scaleY(0);
 	}
+}
+
+section {
+	display: grid;
+	place-items: center;
+	width: 50vw;
+	transition: 1s ease-out forwards !important;
 }
 

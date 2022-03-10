@@ -74,7 +74,7 @@ body {
 			50%
 			60%,
 		white,
-		transparent var(--star2)
+		transparent var(--star1)
 	),
 	radial-gradient(
 		circle at
@@ -182,7 +182,7 @@ main {
 section {
 	display: grid;
 	place-items: center;
-	transition: 1s ease-out;
+	transition: 0.8s ease-out forwards;
 	width: 50vw;
 }
 
