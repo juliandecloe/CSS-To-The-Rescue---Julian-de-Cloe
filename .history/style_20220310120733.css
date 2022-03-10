@@ -219,13 +219,14 @@ label {
 }
 
 section label > figure:first-child {
+	clip-path: polygon(50% 0%, 0% 100%, 100% 100%);
 	border-radius: 50%;
 	position: absolute;
 	left: calc(50% - 55px);
 	width: 110px;
 	height: 130px;
 	z-index: 3;
-	clip-path: ellipse(90% 70% at center top);
+	clip-path:ellipse(90% 70% at center top);
 	background-image:	
 		conic-gradient(
 		at center top,
@@ -429,7 +430,8 @@ input:first-child[type="checkbox"]:checked ~ main section:first-child > ul, inpu
 }
 
 input:first-child[type="checkbox"]:checked ~ main section:first-child > ul > li, input:nth-child(2)[type="checkbox"]:checked ~ main section:nth-child(2) > ul > li {
-	transform: var(--rotate) translateY(2em);
+	/* transform: var(--rotate) translateY(2em); */
+	transform: var(--rotate) scaleY(5) translateY(2em) scaleY(0);
 
 }
 
