@@ -370,7 +370,7 @@ section:nth-child(2) > ul > li::after {
 
 /*===== LAYER 2 =====*/
 
-section > ul ul {
+section > ul > li ul {
 	list-style-type: none;
 	position: relative;
 	width: .5em;
@@ -399,7 +399,7 @@ section:nth-child(2) > ul > li li {
 	height: 1200%;
 	background-color: yellow;
 	transform-origin: center; 
-	transform: var(--rotate2) scaleY(1);
+	transform: var(--rotate2) scaleY(0);
 	transition: .5s ease-out;
 	transition-delay: 1.5s;
 	visibility: hidden;

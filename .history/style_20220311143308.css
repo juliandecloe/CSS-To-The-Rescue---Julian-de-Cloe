@@ -370,7 +370,7 @@ section:nth-child(2) > ul > li::after {
 
 /*===== LAYER 2 =====*/
 
-section > ul ul {
+section > ul > li ul {
 	list-style-type: none;
 	position: relative;
 	width: .5em;
