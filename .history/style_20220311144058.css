@@ -467,7 +467,7 @@ input:first-child[type="checkbox"]:checked ~ main section:first-child > ul > li 
 
 input:nth-child(2)[type="checkbox"]:checked ~ main section:nth-child(2) > ul > li li {
 	visibility: visible;
-	transform: var(--turn);
+	transform: var(--turn) scaleY(6) translateY(2em);
 	opacity: 0;
 }
 

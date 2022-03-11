@@ -467,7 +467,7 @@ input:first-child[type="checkbox"]:checked ~ main section:first-child > ul > li 
 
 input:nth-child(2)[type="checkbox"]:checked ~ main section:nth-child(2) > ul > li li {
 	visibility: visible;
-	transform: var(--turn);
+	transform: var(--turn) scaleY(6) translateY(2em);
 	opacity: 0;
 }
 
@@ -515,7 +515,7 @@ input:nth-child(2)[type="checkbox"]:checked ~ main section:nth-child(2) > ul > l
 		transform: var(--rotate2) translateY(400%) scaleY(0);
 	}
 	100% {
-		transform: var(--rotate2) translateY(0) scaleY(0);
+		transform: var(--rotate2) translateY(0) scaleY(1);;
 	}
 }
 
