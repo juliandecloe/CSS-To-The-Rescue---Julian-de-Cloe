@@ -367,6 +367,10 @@ section:nth-child(2) > ul > li::after {
 	background-color: green;
 }
 
+section:last-child > ul li::after {
+	background-color: pink;
+}
+
 
 /*===== LAYER 2 =====*/
 
