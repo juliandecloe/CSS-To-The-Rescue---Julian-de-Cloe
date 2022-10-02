@@ -2,6 +2,8 @@
 
 Welcome to the beginning of the proces of making my anticlimax firework show. I'll take you to the steps I took and where I went wrong.
 
+!(https://github.com/juliandecloe/The-anticlimax-fireworkshow)[See here the website]
+
 ## Week 1: The plan
 
 Have you seen Kung Fu Panda? In the first movie he tries to get over a wall using fireworks and a chair. I want to recreate this. My plan is to remake this scene. I'll make a chair with the panda on it. When you press on a firework arrow attached to the chair, the firework will go off and the panda flies all over the screen.
