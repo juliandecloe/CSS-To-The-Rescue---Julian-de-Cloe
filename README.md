@@ -2,7 +2,7 @@
 
 Welcome to the beginning of the proces of making my anticlimax firework show. I'll take you to the steps I took and where I went wrong.
 
-[See here the website](https://github.com/juliandecloe/The-anticlimax-fireworkshow)
+[See here the website](https://juliandecloe.github.io/The-anticlimax-fireworkshow/)
 
 ## Week 1: The plan
 
